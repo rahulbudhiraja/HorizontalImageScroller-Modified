@@ -19,6 +19,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,6 +32,7 @@ import com.twotoasters.android.horizontalimagescroller.R;
 import com.twotoasters.android.horizontalimagescroller.image.BitmapHelper;
 import com.twotoasters.android.horizontalimagescroller.image.ImageToLoad;
 import com.twotoasters.android.horizontalimagescroller.image.ImageToLoadDrawableResource;
+import com.twotoasters.android.horizontalimagescroller.image.ImageToLoadSD;
 import com.twotoasters.android.horizontalimagescroller.image.ImageToLoadUrl;
 import com.twotoasters.android.horizontalimagescroller.io.ImageCacheManager;
 import com.twotoasters.android.horizontalimagescroller.io.ImageUrlRequest;
@@ -194,6 +196,12 @@ public class HorizontalImageScrollerAdapter extends BaseAdapter {
 			} else if (imageToLoad instanceof ImageToLoadDrawableResource) {
 				ImageToLoadDrawableResource imageToLoadDrawableResource = (ImageToLoadDrawableResource) imageToLoad;
 				BitmapHelper.applySampledResourceToImageView(_context.getResources(), imageToLoadDrawableResource.getDrawableResourceId(), _imageSize, _imageSize, imageView);
+			}
+			else if(imageToLoad instanceof ImageToLoadSD) {
+				ImageToLoadSD imageToLoadSD = (ImageToLoadSD) imageToLoad;
+				//BitmapHelper.applySampledResourceToImageView(_context.getResources(), imageToLoadSD.getPath(), _imageSize, _imageSize, imageView);;
+				Log.d("yes","yes");
+				BitmapHelper.applySampledImageToImageView(imageToLoadSD.getPath(), imageView);
 			}
 		}
 		return view;

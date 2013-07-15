@@ -15,6 +15,7 @@ Copyright 2012 Two Toasters, LLC
 */
 package com.twotoasters.android.horizontalimagescroller.image;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -22,6 +23,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
+import android.os.Environment;
 import android.widget.ImageView;
 
 public class BitmapHelper {
@@ -84,4 +86,14 @@ public class BitmapHelper {
 			}
 		}
 	}
+	
+	public static void applySampledImageToImageView(String path, ImageView imageView) {
+				
+				File imgFile = new File(path);
+				Bitmap imgBitmap= BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+				imageView.setImageBitmap(imgBitmap);
+				
+			}
+		
+		
 }

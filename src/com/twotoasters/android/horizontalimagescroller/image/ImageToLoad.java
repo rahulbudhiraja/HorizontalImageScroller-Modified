@@ -20,7 +20,9 @@ import android.widget.ImageView;
 public abstract class ImageToLoad {
 	protected ImageView _imageView;
 
+
 	public ImageView getImageView() {
+		
 		return _imageView;
 	}
 
